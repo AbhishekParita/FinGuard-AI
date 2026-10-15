@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1110" />
+    <title>FinGuard AI — Local financial intelligence</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main id="login-screen" class="login-screen" hidden>
+      <form id="login-form" class="login-card">
+        <span class="brand-mark">F</span><div class="eyebrow">LOCAL DEMO</div><h1>Sign in to FinGuard</h1>
+        <p>Use the demo account to explore generated client and portfolio data.</p>
+        <label>Username<input name="username" autocomplete="username" required value="demo"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+        <div id="login-error" class="login-error" role="alert"></div>
+        <button class="primary-button" type="submit">Sign in</button>
+        <small>Demo: <strong>demo</strong> / <strong>FinGuardDemo!</strong></small>
+      </form>
+    </main>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#overview" aria-label="FinGuard home">
+          <span class="brand-mark">F</span><span><strong>FinGuard</strong><small>LOCAL INTELLIGENCE</small></span>
+        </a>
+        <div class="workspace-label">WORKSPACE</div>
+        <nav id="navigation" aria-label="Main navigation">
+          <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span>Overview</button>
+          <button class="nav-item" data-view="assistant"><span class="nav-icon">✳</span>AI assistant</button>
+          <button class="nav-item" data-view="transactions"><span class="nav-icon">⇄</span>Transactions</button>
+          <button class="nav-item" data-view="portfolio"><span class="nav-icon">▥</span>Portfolio</button>
+          <button class="nav-item" data-view="risk"><span class="nav-icon">⌁</span>Risk & profile</button>
+          <button class="nav-item" data-view="market"><span class="nav-icon">↗</span>Market & news</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="local-card"><span class="status-dot"></span><div><strong>Local demo</strong><small>Synthetic data only</small></div></div>
+          <p>Not for financial decisions.</p>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><b>/</b><strong id="page-title">Overview</strong></div>
+          <div class="top-actions">
+            <span class="model-status" id="model-status"><span class="status-dot"></span>Checking AI…</span>
+            <label class="client-picker"><span>CLIENT</span><select id="client-select" aria-label="Select synthetic client"></select></label>
+            <span class="avatar" id="client-avatar">CL</span>
+            <button class="text-button" id="logout-button" type="button">Sign out</button>
+          </div>
+        </header>
+        <section class="content" id="content" aria-live="polite">
+          <div class="loading-state"><span class="spinner"></span>Loading your local demo data…</div>
+        </section>
+        <footer class="footer"><span>FinGuard AI · local synthetic-data demo</span><span>Python calculates · assistant explains</span></footer>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+  </body>
+</html>

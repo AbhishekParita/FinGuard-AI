@@ -1,0 +1,21 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+      HF_MODEL: ${HF_MODEL:-HuggingFaceH4/zephyr-7b-beta}
+      MLFLOW_TRACKING_URI: ${MLFLOW_TRACKING_URI:-}
+      MLFLOW_TRACKING_USERNAME: ${MLFLOW_TRACKING_USERNAME:-}
+      MLFLOW_TRACKING_PASSWORD: ${MLFLOW_TRACKING_PASSWORD:-}
+  dashboard:
+    image: node:24-alpine
+    working_dir: /app
+    volumes: [".:/app:ro"]
+    command: ["node", "frontend/server.mjs"]
+    ports: ["5173:5173"]
+    environment:
+      FINGUARD_API_URL: http://api:8000
+      FINGUARD_WEB_HOST: 0.0.0.0
+      FINGUARD_API_AUTOSTART: "false"
+    depends_on: [api]

@@ -1,0 +1,12 @@
+{
+  "name": "finguard-ai-local",
+  "private": true,
+  "version": "0.2.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node frontend/server.mjs"
+  }
+}
